@@ -3,11 +3,11 @@
 one:
   title: Validation Test
   description: MyText
-  image_url: MyString
+  image_url: crystal.jpg
   price: 9.99
 
 two:
   title: MyString
   description: MyText
-  image_url: MyString
+  image_url: crystal.jpg
   price: 9.99

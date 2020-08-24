@@ -4,8 +4,8 @@ class ProductTest < ActiveSupport::TestCase
   test "Product attribute can not be empty" do
     product = Product.new
     assert product.invalid?
-    puts product.errors.inspect
-    puts product.errors[:title]
+    # puts product.errors.inspect
+    puts product.errors.full_messages
     assert product.errors[:title].any?
     assert product.errors[:price].any?
     assert product.errors[:description].any?
@@ -27,6 +27,13 @@ class ProductTest < ActiveSupport::TestCase
   	assert product.valid?
   	# puts product.errors.to_json
   	
+  end
+
+  test "mininum value" do
+      product = Product.new(title: "Validation Test1", description: "price validation", image_url: "zzz.jpg")
+      assert product.invalid?
+      assert product.errors[:title].any?
+      assert_equal ['is too short (minimum is 10 characters)'], @product.errors[:title]
   end
 
   test "product validation" do
